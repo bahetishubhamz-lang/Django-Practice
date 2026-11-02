@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+</head>
+<body>
+
+    <h1>Student Records</h1>
+
+            
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Email</th>
+                <th>Add Student</th>
+                <th>Detail In</th>
+                <th>Edit Detail</th>
+                <th>Delete Detail</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for students in student %}
+            <tr>
+                <td>{{ students.name }}</td>
+                <td>{{ students.age }}</td>
+                <td>{{ students.email }}</td>
+                <td><a href="{% url 'createstud' %}">Add Student</a></td>
+                <td><a href="{% url 'studDetail' students.id %}">Detail</a></td>
+                <td><a href="{% url 'studedit' students.id %}">Student Edit</a></td>
+                <td><a href="{% url 'studentdelete' students.id %}">Student Delete</a></td>   
+            </tr>
+            {% empty %}
+            <tr>
+                
+                <td colspan="4">No student records found</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
